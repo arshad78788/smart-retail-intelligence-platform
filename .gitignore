@@ -1,0 +1,16 @@
+# Data files
+data/
+*.csv
+*.zip
+*.xlsx
+models/
+*.pkl
+*.h5
+*.joblib
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+venv/
+.env
+kaggle.json
+access_token
