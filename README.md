@@ -16,4 +16,13 @@ Place CSV in data/ folder.
 Python, Pandas, NumPy, Scikit-learn, XGBoost, TensorFlow, Statsmodels, Streamlit
 
 ## Setup
-pip install -r requirements.txt
+1. Clone the repository
+2. Install dependencies: pip install -r requirements.txt
+3. Download dataset from Kaggle and place in data/ folder
+4. Run notebooks in order
+
+## Results
+- Customer Segments: 4 (Champions, At Risk, Lost Customers, New/Promising)
+- Total Customers Analyzed: 5,878
+- Total Revenue Analyzed: $1.77M
+- Date Range: Dec 2009 - Dec 2011
