@@ -7,7 +7,7 @@ st.set_page_config(page_title='Customer Segmentation', layout='wide')
 st.title('🎯 Customer Segmentation')
 st.markdown('---')
 
-BASE = '/content/drive/MyDrive/Smart_Retail_Project'
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 rfm = pd.read_csv(os.path.join(BASE, 'data/rfm_clustered.csv'))
 
 st.subheader('📊 Customer Segments Overview')

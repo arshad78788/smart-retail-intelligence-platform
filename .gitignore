@@ -1,12 +1,14 @@
-# Data files
-data/
-*.csv
-*.zip
-*.xlsx
-models/
-*.pkl
-*.h5
-*.joblib
+# Data files (large ones only)
+data/online-retail-ii-uci.zip
+data/online_retail_II.csv
+data/cleaned_retail_data.csv
+data/fashion/
+
+# Trained models (large)
+models/cnn_product_classifier.h5
+models/lstm_forecast_model.h5
+
+# Python cache
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
