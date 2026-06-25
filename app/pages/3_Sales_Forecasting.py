@@ -7,8 +7,12 @@ st.set_page_config(page_title='Sales Forecasting', layout='wide')
 st.title('📈 Sales Forecasting')
 st.markdown('---')
 
-BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-weekly_sales = pd.read_csv(os.path.join(BASE, 'data/weekly_sales.csv'))
+try:
+    BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    weekly_sales = pd.read_csv(os.path.join(BASE, 'data/weekly_sales.csv'))
+except:
+    weekly_sales = pd.read_csv('data/weekly_sales.csv')
+
 weekly_sales['Date'] = pd.to_datetime(weekly_sales['Date'])
 
 st.subheader('📊 Weekly Sales Trend')
@@ -36,15 +40,3 @@ st.subheader('📌 Key Findings')
 st.markdown('- **SARIMA** outperformed LSTM on this dataset')
 st.markdown('- Clear seasonality detected in weekly sales')
 st.markdown('- Revenue peaks in **October-November** (holiday season)')
-
-st.markdown('---')
-st.subheader('📷 Forecast Charts')
-col1, col2 = st.columns(2)
-with col1:
-    arima_img = os.path.join(BASE, 'reports/arima_sarima_forecast.png')
-    if os.path.exists(arima_img):
-        st.image(arima_img, caption='ARIMA vs SARIMA Forecast', use_column_width=True)
-with col2:
-    lstm_img = os.path.join(BASE, 'reports/final_forecast_comparison.png')
-    if os.path.exists(lstm_img):
-        st.image(lstm_img, caption='ARIMA vs SARIMA vs LSTM', use_column_width=True)

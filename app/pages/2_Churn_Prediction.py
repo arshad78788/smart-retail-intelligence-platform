@@ -7,9 +7,13 @@ st.set_page_config(page_title='Churn Prediction', layout='wide')
 st.title('⚠️ Churn Prediction')
 st.markdown('---')
 
-BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-model = joblib.load(os.path.join(BASE, 'models/churn_model.pkl'))
-scaler = joblib.load(os.path.join(BASE, 'models/churn_scaler.pkl'))
+try:
+    BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    model = joblib.load(os.path.join(BASE, 'models/churn_model.pkl'))
+    scaler = joblib.load(os.path.join(BASE, 'models/churn_scaler.pkl'))
+except:
+    model = joblib.load('models/churn_model.pkl')
+    scaler = joblib.load('models/churn_scaler.pkl')
 
 st.subheader('🔮 Predict Customer Churn')
 col1, col2, col3 = st.columns(3)
