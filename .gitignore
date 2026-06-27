@@ -1,12 +1,14 @@
-# Data files
-data/
-*.csv
-*.zip
-*.xlsx
-models/
-*.pkl
-*.h5
-*.joblib
+# Large data files
+data/online-retail-ii-uci.zip
+data/online_retail_II.csv
+data/cleaned_retail_data.csv
+data/fashion/
+
+# Large models
+models/cnn_product_classifier.h5
+models/lstm_forecast_model.h5
+
+# Python cache
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
@@ -14,3 +16,4 @@ venv/
 .env
 kaggle.json
 access_token
+nohup.out
