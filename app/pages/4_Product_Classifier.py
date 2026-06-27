@@ -1,7 +1,6 @@
 import streamlit as st
 import numpy as np
 import os
-import joblib
 from PIL import Image
 
 st.set_page_config(page_title='Product Classifier', layout='wide')
@@ -10,7 +9,20 @@ st.markdown('---')
 
 st.subheader('🔮 Upload Product Image for Classification')
 st.markdown('Supported categories: **Apparel, Accessories, Footwear, Personal Care**')
-st.info('CNN model runs locally. Below are the model results and performance metrics.')
+
+uploaded_file = st.file_uploader('Choose a product image...', type=['jpg','jpeg','png'])
+
+if uploaded_file is not None:
+    col1, col2 = st.columns(2)
+    with col1:
+        st.subheader('Uploaded Image')
+        image = Image.open(uploaded_file).convert('RGB')
+        st.image(image, width=300)
+    with col2:
+        st.subheader('Model Info')
+        st.info('CNN model (MobileNetV2) was trained locally with 97% accuracy.')
+        st.markdown('**To run locally:**')
+        st.code('pip install tensorflow\nstreamlit run app/Home.py')
 
 st.markdown('---')
 st.subheader('📊 Model Performance')
@@ -35,6 +47,13 @@ with col4:
     st.metric('Personal Care', '86%', 'F1 Score')
 
 st.markdown('---')
+st.subheader('🏗️ Model Architecture')
+st.markdown('- **Base Model:** MobileNetV2 (pretrained on ImageNet)')
+st.markdown('- **Custom Layers:** GlobalAveragePooling2D → Dense(128) → Dropout(0.3) → Dense(64) → Softmax')
+st.markdown('- **Total Parameters:** 29,857')
+st.markdown('- **Training:** Early stopping with patience=5')
+
+st.markdown('---')
 st.subheader('📷 Model Visualizations')
 try:
     BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -51,12 +70,4 @@ try:
     if os.path.exists(pred_img):
         st.image(pred_img, caption='Sample Predictions', use_column_width=True)
 except:
-    st.warning('Charts loading...')
-
-st.markdown('---')
-st.subheader('🏗️ Model Architecture')
-st.markdown('- **Base Model:** MobileNetV2 (pretrained on ImageNet)')
-st.markdown('- **Custom Layers:** GlobalAveragePooling2D → Dense(128) → Dropout(0.3) → Dense(64) → Softmax')
-st.markdown('- **Total Parameters:** 29,857')
-st.markdown('- **Training:** Early stopping with patience=5')
-st.markdown('- **Transfer Learning:** Base model frozen, only top layers trained')
+    pass
