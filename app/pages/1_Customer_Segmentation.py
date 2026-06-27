@@ -7,8 +7,14 @@ st.set_page_config(page_title='Customer Segmentation', layout='wide')
 st.title('🎯 Customer Segmentation')
 st.markdown('---')
 
-BASE = '/content/drive/MyDrive/Smart_Retail_Project'
-rfm = pd.read_csv(os.path.join(BASE, 'data/rfm_clustered.csv'))
+# Streamlit Cloud compatible path
+DATA_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data')
+if not os.path.exists(DATA_PATH):
+    DATA_PATH = 'data'
+if not os.path.exists(DATA_PATH):
+    DATA_PATH = os.path.join(os.getcwd(), 'data')
+
+rfm = pd.read_csv(os.path.join(DATA_PATH, 'rfm_clustered.csv'))
 
 st.subheader('📊 Customer Segments Overview')
 col1, col2, col3, col4 = st.columns(4)
