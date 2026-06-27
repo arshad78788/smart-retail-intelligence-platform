@@ -7,14 +7,15 @@ st.set_page_config(page_title='Customer Segmentation', layout='wide')
 st.title('🎯 Customer Segmentation')
 st.markdown('---')
 
-# Streamlit Cloud compatible path
-DATA_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data')
-if not os.path.exists(DATA_PATH):
-    DATA_PATH = 'data'
-if not os.path.exists(DATA_PATH):
-    DATA_PATH = os.path.join(os.getcwd(), 'data')
+# Path fix - works on both Streamlit Cloud and local
+CURR_DIR = os.path.dirname(os.path.abspath(__file__))
+ROOT_DIR = os.path.dirname(CURR_DIR)
+DATA_FILE = os.path.join(ROOT_DIR, 'data', 'rfm_clustered.csv')
 
-rfm = pd.read_csv(os.path.join(DATA_PATH, 'rfm_clustered.csv'))
+if not os.path.exists(DATA_FILE):
+    DATA_FILE = '/mount/src/smart-retail-intelligence-platform/data/rfm_clustered.csv'
+
+rfm = pd.read_csv(DATA_FILE)
 
 st.subheader('📊 Customer Segments Overview')
 col1, col2, col3, col4 = st.columns(4)
