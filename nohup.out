@@ -366,3 +366,14 @@ WARNING: All log messages before absl::InitializeLog() is called are written to 
 I0000 00:00:1782161292.424529   35112 gpu_device.cc:2020] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 12585 MB memory:  -> device: 0, name: Tesla T4, pci bus id: 0000:00:04.0, compute capability: 7.5
 WARNING:absl:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
 2026-06-22 20:48:14.566 The `use_column_width` parameter has been deprecated and will be removed in a future release. Please utilize the `width` parameter instead.
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+
+2026-06-27 08:23:11.157 Uvicorn server started on 0.0.0.0:8501
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://172.28.0.12:8501
+  External URL: http://35.197.104.29:8501
+
